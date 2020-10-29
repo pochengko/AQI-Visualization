@@ -6,12 +6,12 @@ from bs4 import BeautifulSoup
 import time
 import pymysql
 
+
 options = Options()
 options.add_argument("--disable-notifications")
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 
-#chrome = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
 chrome = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', chrome_options=options)
 chrome.get("https://nidss.cdc.gov.tw/en/Rods/Rods02?disease=4")
 
@@ -35,13 +35,6 @@ central = tbody[0].find_all('tr')[-2].find_all('td')[3].text
 southern = tbody[0].find_all('tr')[-2].find_all('td')[4].text
 kaoping = tbody[0].find_all('tr')[-2].find_all('td')[5].text
 eastern = tbody[0].find_all('tr')[-2].find_all('td')[6].text
-
-
-for i in range(0,7):
-    tds = tbody[0].find_all('tr')[-2].find_all('td')[i].text
-
-
-
 
 date = soup.find('td', {'align': 'left'})
 
